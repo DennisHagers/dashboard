@@ -1,6 +1,9 @@
 import { sql } from "@vercel/postgres";
 
-export async function query(text: string, params: any[] = []) {
+// Define a type for the query parameters
+type QueryParams = string | number | boolean | null | undefined;
+
+export async function query(text: string, params: QueryParams[] = []) {
   try {
     const result = await sql.query(text, params);
     return result;
